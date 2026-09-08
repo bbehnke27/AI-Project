@@ -21,7 +21,8 @@ class Conversation:
             json={
                 "model": self.model,
                 "messages": self.messages,
-                "stream": False
+                "stream": False,
+                "think" : False
             }
         )
 
