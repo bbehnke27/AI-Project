@@ -21,10 +21,13 @@ class Conversation:
             json={
                 "model": self.model,
                 "messages": self.messages,
-                "stream": False,
-                "think" : False
+                "stream": False
             }
         )
+
+        if not response.ok:
+            print("Ollama error:")
+            print(response.text)
 
         response.raise_for_status()
 

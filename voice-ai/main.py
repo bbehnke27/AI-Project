@@ -1,5 +1,6 @@
 from audio.microphone import record_audio
 from speech.transcriber import Transcriber
+from speech.speaker import Speaker
 from brain.conversation import Conversation
 
 
@@ -9,6 +10,7 @@ def main():
 
     transcriber = Transcriber()
     conversation = Conversation()
+    speaker = Speaker()
 
     print("\nVoice AI ready!")
 
@@ -19,7 +21,7 @@ def main():
         # Record
         audio = record_audio()
 
-        # Speech → text
+        # Speech to text
         print("Transcribing...")
 
         text = transcriber.transcribe(audio)
@@ -30,12 +32,17 @@ def main():
 
         print(f"\nYou: {text}")
 
-        # Text → Qwen
+        # Text to Qwen
         print("Thinking...")
 
         response = conversation.ask(text)
 
         print(f"\nAI: {response}")
+
+        # Text to speech
+        print("Speaking...")
+
+        speaker.speak(response)
 
 
 if __name__ == "__main__":
